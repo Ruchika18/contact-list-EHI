@@ -1,5 +1,5 @@
 # ContactList
-
+  
 contact-list-EHI 
 
 Production ready application for maintaining contact information
@@ -24,13 +24,17 @@ Folder structutre:
 11.	mock --> app --> routes --> controllers --> contact-list.json for mock data
 
 steps to Run:
+
  To Run this Project perform below steps
  
-1.	In project folder --> conatact-list-EHI --> run "npm install"
-2.	Install express js globally using command --> "npm install -g express"
-3.	Inside project folder run --> ng serve and open browser window with url http://localhost:4200/
-4.	Inside mock folder run command --> node server.js
-5.	perform any CRUD operation.
+1.	clone project using git@github.com:Ruchika18/contact-list-EHI.git 
+2.	pull branch develop
+3.	In project folder --> conatact-list-EHI --> run "npm install"
+4.	Install express js globally using command --> "npm install -g express"
+5.	Inside project folder run --> ng serve and open browser window with url http://localhost:4200/
+6.	Inside mock folder run command --> node server.js
+7.	perform any CRUD operation.
+
 
 ## Development server
 

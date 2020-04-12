@@ -1,5 +1,5 @@
 <div class="container">
-  <h3 mat-dialog-title>Issue id: {{data.id}}</h3>
+  <h3 mat-dialog-title>Contact Info</h3>
 
   <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
 
@@ -29,19 +29,14 @@
 
     <div class="form">
         <mat-form-field color="accent">
-          <input matInput placeholder="Email" [(ngModel)]="data.email" name="url">
+          <input matInput placeholder="Email" [(ngModel)]="data.email" name="email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required>
+          <mat-error *ngIf="formControl.invalid">{{getEmailErrorMessage()}}</mat-error>
         </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput placeholder="Mobile No" [(ngModel)]="data.mobileNo" name="mobileNo">
-      </mat-form-field>
-    </div>
-
-    <div class="form">
-      <mat-form-field color="accent">
-        <input matInput placeholder="Status" [(ngModel)]="data.status" name="status">
+        <input matInput placeholder="Mobile No" [(ngModel)]="data.mobileNo" name="mobileNo" required>
       </mat-form-field>
     </div>
 

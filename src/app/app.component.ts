@@ -1,16 +1,11 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {DataService} from './services/data.service';
-import {HttpClient} from '@angular/common/http';
-import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import {Contact} from './models/issue';
+import {MatDialog } from '@angular/material/dialog';
+import {Contact} from './models/contact';
 import {DataSource} from '@angular/cdk/collections';
 import {AddDialogComponent} from './dialogs/add/add.dialog.component';
 import {EditDialogComponent} from './dialogs/edit/edit.dialog.component';
 import {DeleteDialogComponent} from './dialogs/delete/delete.dialog.component';
-import {BehaviorSubject, fromEvent, merge, Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -20,18 +15,12 @@ import {map} from 'rxjs/operators';
 
 export class AppComponent implements OnInit {
   displayedColumns = ['id', 'firstName', 'lastName', 'email', 'mobileNo', 'status', 'actions'];
-  exampleDatabase: DataService | null;
   dataSource: any | null;
-  index: number;
-  id: number;
 
-  constructor(public httpClient: HttpClient,
-              public dialog: MatDialog,
-              public dataService: DataService) {}
-
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
-  @ViewChild('filter',  {static: true}) filter: ElementRef;
+  constructor(
+        public dialog: MatDialog,
+        public dataService: DataService
+        ) {}
 
   ngOnInit() {
     this.loadData();
@@ -50,13 +39,13 @@ export class AppComponent implements OnInit {
   startEdit(row, i) {
     const dialogRef = this.dialog.open(EditDialogComponent, {
       data: {
-            id: row.id,
-            firstName: row.firstName,
-            lastName: row.lastName,
-            email: row.email,
-             mobileNo: row.mobileNo,
-             status: row.status
-             }
+              id: row.id,
+              firstName: row.firstName,
+              lastName: row.lastName,
+              email: row.email,
+              mobileNo: row.mobileNo,
+              status: row.status
+           }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -67,18 +56,8 @@ export class AppComponent implements OnInit {
    });
   }
 
-  deleteItem(i: number, row) {
-    this.index = i;
-    this.id = row.id;
+  deleteItem(i: number, row: Contact) {
     const dialogRef = this.dialog.open(DeleteDialogComponent, {
-      data: {
-      id: row.id,
-      firstName: row.firstName,
-      lastName: row.lastName,
-      email: row.email,
-       mobileNo: row.mobileNo,
-       status: row.status
-       }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -104,5 +83,4 @@ export class AppComponent implements OnInit {
       }
       this.dataService.editContact(row.id,row).subscribe();
    }
-  disconnect() {}
 }

@@ -51,6 +51,11 @@
   flex: 0 0 10%;
 }
 
+.mat-cell:nth-child(4),
+.mat-header-cell:nth-child(4){
+  flex: 0 0 25%;
+}
+
 .mat-cell:nth-child(7),
 .mat-header-cell:nth-child(7){
   flex: 0 0 10%;

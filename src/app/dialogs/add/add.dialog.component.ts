@@ -2,7 +2,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import {Component, Inject} from '@angular/core';
 import {DataService} from '../../services/data.service';
 import {FormControl, Validators} from '@angular/forms';
-import {Contact} from '../../models/issue';
+import {Contact} from '../../models/contact';
 
 @Component({
   selector: 'app-add.dialog',
@@ -22,10 +22,18 @@ export class AddDialogComponent {
   ]);
 
   getErrorMessage() {
-    return this.formControl.hasError('required') ? 'Required field' :
-      this.formControl.hasError('email') ? 'Not a valid email' :
-        '';
+    if (this.formControl.hasError('required')) {
+      return 'Required field';
+    } else if(this.formControl.hasError('email')) {
+      return 'Not a valid email';
+    }
   }
+
+  getEmailErrorMessage() {
+      if (this.formControl.hasError('required')) {
+        return 'Not a valid email';
+      }
+   }
 
   submit() {
   // emppty stuff

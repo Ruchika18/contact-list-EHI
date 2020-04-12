@@ -22,26 +22,26 @@
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput placeholder="Email" [(ngModel)]="data.email" name="url">
+        <input matInput placeholder="Email" [(ngModel)]="data.email" name="email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required>
+        <mat-error *ngIf="formControl.invalid">{{getEmailErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput placeholder="Mobile No" [(ngModel)]="data.mobileNo" name="created_at">
+        <input matInput placeholder="Mobile No" [(ngModel)]="data.mobileNo" pattern="^\d*[0-9]\d*$" name="mobileNo">
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field color="accent">
-<!--        <input matInput placeholder="Status" [(ngModel)]="data.status" name="updated_at">-->
         <mat-slide-toggle (change)="statusChanged($event)">Status</mat-slide-toggle>
         <textarea matInput hidden></textarea>
       </mat-form-field>
     </div>
 
     <div mat-dialog-actions>
-      <button mat-button [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="confirmAdd()">Save</button>
+      <button mat-button [type]="submit" [disabled]="formControl.invalid" [mat-dialog-close]="1" (click)="confirmAdd()">Save</button>
       <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
     </div>
   </form>

@@ -7,32 +7,32 @@
 
     <!-- ID Column -->
     <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Sr No.</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>Sr No.</mat-header-cell>
       <mat-cell *matCellDef="let element; let i = index;" >{{i+1}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="firstName">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>First Name</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>First Name</mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.firstName}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="lastName">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>Last Name</mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.lastName}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="email">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.email}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="mobileNo">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Mobile No</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>Mobile No</mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.mobileNo}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="status">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
       <mat-cell *matCellDef="let row">
         <mat-slide-toggle
           [checked]="row.status === 'active'"
@@ -63,16 +63,4 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
-
-
-  <!--  <div class="no-results" [style.display]="dataSource.renderedData.length == 0 ? '' : 'none'">-->
-  <!--    No results-->
-  <!--  </div>-->
-
-  <!--  <mat-paginator #paginator-->
-  <!--                 [length]="dataSource.filteredData.length"-->
-  <!--                 [pageIndex]="0"-->
-  <!--                 [pageSize]="10"-->
-  <!--                 [pageSizeOptions]="[5, 10, 25, 100]">-->
-  <!--  </mat-paginator>-->
 </div>

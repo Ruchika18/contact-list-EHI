@@ -15,14 +15,21 @@ export class EditDialogComponent {
 
   formControl = new FormControl('', [
     Validators.required
-    // Validators.email,
   ]);
 
   getErrorMessage() {
-    return this.formControl.hasError('required') ? 'Required field' :
-      this.formControl.hasError('email') ? 'Not a valid email' :
-        '';
-  }
+      if (this.formControl.hasError('required')) {
+        return 'Required field';
+      } else if(this.formControl.hasError('email')) {
+        return 'Not a valid email';
+      }
+    }
+
+  getEmailErrorMessage() {
+      if (this.formControl.hasError('email')) {
+        return 'Not a valid email';
+      }
+   }
 
   submit() {
     // emppty stuff

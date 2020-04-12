@@ -58,6 +58,14 @@ export class AppComponent implements OnInit {
 
   deleteItem(i: number, row: Contact) {
     const dialogRef = this.dialog.open(DeleteDialogComponent, {
+    data: {
+                  id: row.id,
+                  firstName: row.firstName,
+                  lastName: row.lastName,
+                  email: row.email,
+                  mobileNo: row.mobileNo,
+                  status: row.status
+               }
     });
 
     dialogRef.afterClosed().subscribe(result => {

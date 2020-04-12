@@ -20,16 +20,23 @@ export class EditDialogComponent {
   getErrorMessage() {
       if (this.formControl.hasError('required')) {
         return 'Required field';
-      } else if(this.formControl.hasError('email')) {
-        return 'Not a valid email';
+      } else if(this.formControl.hasError('lastName') || this.formControl.hasError('firstName')) {
+        return 'Not a valid input';
       }
     }
 
   getEmailErrorMessage() {
       if (this.formControl.hasError('email')) {
-        return 'Not a valid email';
+        return 'Not valid Email Id';
       }
    }
+
+   getMobileErrorMessage() {
+         if (this.formControl.hasError('mobileNo')) {
+           return 'Not valid Mobile Number';
+         }
+      }
+
 
   submit() {
     // emppty stuff

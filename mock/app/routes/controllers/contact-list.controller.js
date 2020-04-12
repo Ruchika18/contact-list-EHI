@@ -1,32 +1,6 @@
+var contacts = require('./contact-list.json');
+
 var uniqid = require('uniqid');
-
-var contacts = [
-         {
-          "id": "1",
-          "firstName": "Ruchika",
-          "lastName": "Bhavsar",
-          "status": "active",
-          "email": "ruchibhavsar18@gmail.com",
-          "mobileNo": "8145673890"
-        },
-        {
-          "id": "2",
-          "firstName": "Bob",
-          "lastName": "bannerji",
-          "status": "active",
-          "email": "bob32@gmail.com",
-          "mobileNo": "9999900000"
-        },
-        {
-          "id": "3",
-          "firstName": "Jai",
-          "lastName": "desai",
-          "status": "inactive",
-          "email": "jai87@gmail.com",
-          "mobileNo": "9999900000"
-        }
-      ]
-
 
 exports.create = function(req, res) {
 	console.log("aaaaaa");

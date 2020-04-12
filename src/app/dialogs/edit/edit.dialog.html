@@ -36,7 +36,8 @@
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput placeholder="Mobile No" [(ngModel)]="data.mobileNo" name="mobileNo" required>
+        <input matInput placeholder="Mobile No." [(ngModel)]="data.mobileNo" name="mobileNo" required>
+        <mat-error *ngIf="formControl.invalid">{{getMobileErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
 

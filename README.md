@@ -27,7 +27,7 @@ steps to Run:
 
  To Run this Project perform below steps
  
-1.	clone project using git@github.com:Ruchika18/contact-list-EHI.git 
+1.	clone project using git@github.com:Ruchika18/contact-list-EHI.git or download Zip and exract
 2.	pull branch develop
 3.	In project folder --> conatact-list-EHI --> run "npm install"
 4.	Install express js globally using command --> "npm install -g express"

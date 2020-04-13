@@ -1,5 +1,5 @@
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {DataService} from '../../services/data.service';
 import {FormControl, Validators} from '@angular/forms';
 import {Contact} from '../../models/contact';
@@ -10,12 +10,16 @@ import {Contact} from '../../models/contact';
   styleUrls: ['../../dialogs/add/add.dialog.css']
 })
 
-export class AddDialogComponent {
+export class AddDialogComponent implements OnInit{
   constructor(public dialogRef: MatDialogRef<AddDialogComponent>,
               public dataService: DataService) {
               }
 
   public data: any = {};
+
+  ngOnInit() {
+       this.data.status = "inactive";
+  }
 
   formControl = new FormControl('', [
     Validators.required
@@ -36,7 +40,7 @@ export class AddDialogComponent {
    }
 
   submit() {
-  // emppty stuff
+  // empty stuff
   }
 
   onNoClick(): void {
@@ -51,7 +55,15 @@ export class AddDialogComponent {
     if(value.checked === true) {
        this.data.status = "active";
     } else {
-       this.data.status = "active";
+       this.data.status = "inactive";
     }
   }
+  keyPress(event: any) {
+      const pattern = /[0-9\+\-\ ]/;
+
+      let inputChar = String.fromCharCode(event.charCode);
+      if (event.keyCode != 8 && !pattern.test(inputChar)) {
+        event.preventDefault();
+      }
+   }
 }

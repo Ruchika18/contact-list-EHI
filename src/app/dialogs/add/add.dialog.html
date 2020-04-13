@@ -29,7 +29,7 @@
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput placeholder="Mobile No" [(ngModel)]="data.mobileNo" name="mobileNo" required>
+        <input matInput placeholder="Mobile No" name="mobileNo"  [(ngModel)]="data.mobileNo" (keypress)="keyPress($event)" minlength=10 maxlength=10 required>
       </mat-form-field>
     </div>
 

@@ -18,12 +18,14 @@ $theme: mat-light-theme($primary, $accent, $warn);
 body {
   font-family: mat-font-family($config);
   font-weight: normal;
-  width: 80%;
-  margin:0;
 }
 .content {
-  max-width: 80%;
-  margin-top: 40px;
-  margin-left: 25%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    margin-top: 25px;
 }
+
+
 

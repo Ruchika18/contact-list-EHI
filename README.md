@@ -31,9 +31,10 @@ steps to Run:
 2.	pull branch develop
 3.	In project folder --> conatact-list-EHI --> run "npm install"
 4.	Install express js globally using command --> "npm install -g express"
-5.	Inside project folder run --> ng serve and open browser window with url http://localhost:4200/
-6.	Inside mock folder run command --> node server.js
-7.	perform any CRUD operation.
+5.	Install uniqueid using npm install uniqid
+6.	Inside project folder run --> ng serve and open browser window with url http://localhost:4200/
+7.	Inside mock folder run command --> node server.js
+8.	perform any CRUD operation.
 
 
 ## Development server

@@ -20,23 +20,16 @@ export class EditDialogComponent {
   getErrorMessage() {
       if (this.formControl.hasError('required')) {
         return 'Required field';
-      } else if(this.formControl.hasError('lastName') || this.formControl.hasError('firstName')) {
-        return 'Not a valid input';
+      } else if(this.formControl.hasError('email')) {
+        return 'Not a valid email';
       }
     }
 
-  getEmailErrorMessage() {
-      if (this.formControl.hasError('email')) {
-        return 'Not valid Email Id';
-      }
-   }
-
-   getMobileErrorMessage() {
-         if (this.formControl.hasError('mobileNo')) {
-           return 'Not valid Mobile Number';
-         }
-      }
-
+    getEmailErrorMessage() {
+        if (this.formControl.hasError('required')) {
+          return 'Not a valid email';
+        }
+     }
 
   submit() {
     // emppty stuff
@@ -48,5 +41,13 @@ export class EditDialogComponent {
 
   stopEdit(): void {
     this.dataService.editContact(this.data.id, this.data).subscribe();
+  }
+  keyPress(event: any) {
+      const pattern = /[0-9\+\-\ ]/;
+
+      let inputChar = String.fromCharCode(event.charCode);
+      if (event.keyCode != 8 && !pattern.test(inputChar)) {
+        event.preventDefault();
+      }
   }
 }

@@ -4,43 +4,54 @@ import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { Observable } from 'rxjs/Observable';
 import {DataService} from './services/data.service';
-import { MdDialog, MdDialogRef, OverlayRef } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import {HttpClient} from '@angular/common/http';
 
-class MdDialogMock {
+
+class MatDialogMock {
   open() {
     return {
-      afterClosed: () => Observable.of('')
+      afterClosed: () => typeof Observable
     };
   }
 };
 
 describe('AppComponent', () => {
-  let dialog: MdDialogMock;
+  let app: AppComponent;
+  let dialog: MatDialogMock;
   let debugElement: DebugElement;
   let element: HTMLElement;
+  let dataService: DataService;
+  let httpClientMock;
 
   beforeEach(async(() => {
+  httpClientMock = jasmine.createSpyObj(['get', 'post', 'delete', 'put']);
     TestBed.configureTestingModule({
       declarations: [
         AppComponent
       ],
       providers: [
               {
-                provide: MdDialog, useClass: MdDialogMock
+                provide: MatDialog, useClass: MatDialogMock
               },
-             DataService
+              {
+                provide: DataService, useClass: DataService
+              },
+              {
+                provide: HttpClient, useClass: httpClientMock
+              }
             ]
-    }).compileComponents();
-
+    }).compileComponents()
+    .then(()=> {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-     debugElement = fixture.debugElement;
-     element = debugElement.nativeElement;
+    app = fixture.componentInstance;
+    debugElement = fixture.debugElement;
+    element = debugElement.nativeElement;
 
         dataService = TestBed.get(DataService);
-        dialog = TestBed.get(MdDialog);
-
-  }));
+        dialog = TestBed.get(MatDialog);;
+    });
+}));
 
   it('should create the app', () => {
     expect(app).toBeTruthy();
@@ -48,12 +59,13 @@ describe('AppComponent', () => {
 
   it(`should have as title 'contact-list'`, () => {
     spyOn(dialog, 'open').and.callThrough();
-    spyOn(dataService, 'deleteContact').and.callThrough();
+    spyOn(dataService
+    , 'deleteContact').and.callThrough();
 
         const deleteButton = debugElement.query(By.css('aria-label="Delete"'));
         deleteButton.triggerEventHandler('click', null);
 
         expect(dialog.open).toHaveBeenCalled();
-        expect(dataService.deleteContact).toHaveBeenCalledWith('');
+        expect(dataService.deleteContact).toHaveBeenCalled;
   });
 });

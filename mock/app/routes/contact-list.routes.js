@@ -2,15 +2,15 @@ module.exports = function(app) {
 
     var contacts = require('./controllers/contact-list.controller.js');
 
-    // Create a new Customer
+    // Create a new Contact
     app.post('/api/contacts', contacts.create);
 
-    // Retrieve all Customer
+    // Retrieve all Contact
     app.get('/api/contacts', contacts.findAll);
 
-    // Update a Customer with Id
+    // Update a Contact with Id
     app.put('/api/contacts/:id', contacts.update);
 
-    // Delete a Customer with Id
+    // Delete a Contact with Id
     app.delete('/api/contacts/:id', contacts.delete);
 }

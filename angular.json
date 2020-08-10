@@ -13,18 +13,18 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "docs",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
+            "outputPath": "docs/contact-list",
+            "index": "docs/index.html",
+            "main": "docs/main.ts",
+            "polyfills": "docs/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "docs/favicon.ico",
+              "docs/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "docs/styles.scss"
             ],
             "scripts": []
           },
